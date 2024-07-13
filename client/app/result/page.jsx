@@ -6,14 +6,20 @@ import axios from "axios";
 export default function ResultPage() {
   const router = useRouter();
   const [formData, setFormData] = useState(null);
+  const [formId, setFormId] = useState(null);
 
   useEffect(() => {
     const storedFormData = JSON.parse(localStorage.getItem("formData"));
     const formId = storedFormData ? storedFormData.formId : null;
+    setFormId(formId);
+
     if (!formId) {
       router.push("/page1");
-      return;
     }
+  }, []);
+
+  useEffect(() => {
+    if (!formId) return;
 
     const fetchFormData = async () => {
       try {
@@ -30,7 +36,11 @@ export default function ResultPage() {
   }, [formId]);
 
   if (!formData) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      </div>
+    );
   }
 
   return (
