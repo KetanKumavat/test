@@ -35,7 +35,7 @@ export default function Page2() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/page2", formData);
+      await axios.post("https://test-6ufl.onrender.com/api/page2", formData);
       localStorage.setItem("formData", JSON.stringify(formData));
       router.push("/page3");
     } catch (err) {

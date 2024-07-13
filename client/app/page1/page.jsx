@@ -37,7 +37,7 @@ export default function Page() {
 
       if (!formData.formId) {
         const response = await axios.post(
-          "http://localhost:5000/api/createForm"
+          "https://test-6ufl.onrender.com/api/createForm"
         );
         const { formId } = response.data;
         updatedFormData = {
@@ -49,7 +49,10 @@ export default function Page() {
         console.log(formId);
       }
 
-      await axios.post("http://localhost:5000/api/page1", updatedFormData);
+      await axios.post(
+        "https://test-6ufl.onrender.com/api/page1",
+        updatedFormData
+      );
 
       router.push("/page2");
     } catch (err) {

@@ -40,9 +40,10 @@ export default function Page() {
     }
 
     try {
-      await axios.post("http://localhost:5000/api/page3", formData);
+      await axios.post("https://test-6ufl.onrender.com/api/page3", formData);
       alert("Form submitted successfully!");
       setIsSubmitted(true);
+      router.push("/result");
     } catch (err) {
       console.error(err.message);
     }
@@ -51,7 +52,7 @@ export default function Page() {
   const handleDownloadPDF = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/downloadPDF/${formData.formId}`,
+        `https://test-6ufl.onrender.com/api/downloadPDF/${formData.formId}`,
         {
           responseType: "blob",
         }
